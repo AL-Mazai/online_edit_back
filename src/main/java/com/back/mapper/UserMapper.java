@@ -11,4 +11,6 @@ public interface UserMapper{
     public List<User> getAllUser();
 
     public int updatePasswordByUserId(Integer id, String newPassword);
+
+    public int login(String name, String password);
 }

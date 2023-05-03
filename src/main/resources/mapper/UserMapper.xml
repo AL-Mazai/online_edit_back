@@ -16,5 +16,8 @@
     <select id="getAllUser" resultType="com.back.pojo.User">
         select * from users;
     </select>
+    <select id="login" resultType="java.lang.Integer">
+
+    </select>
 
 </mapper>
