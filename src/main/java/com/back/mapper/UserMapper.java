@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface UserMapper{
     public List<User> getAllUser();
+
+    public int updatePasswordByUserId(Integer id, String newPassword);
 }

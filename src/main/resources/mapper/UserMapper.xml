@@ -9,6 +9,9 @@
             <result property="userName" column="user_name" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
     </resultMap>
+    <update id="updatePasswordByUserId">
+        update users set password = #{newPassword} where user_id = #{id};
+    </update>
 
     <select id="getAllUser" resultType="com.back.pojo.User">
         select * from users;
