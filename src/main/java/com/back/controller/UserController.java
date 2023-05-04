@@ -20,4 +20,8 @@ public class UserController {
     public List<User> ListUser() {
         return userService.getAllUser();
     }
+
+    public int getUser(Integer id){
+        return 0;
+    }
 }
