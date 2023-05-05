@@ -1,6 +1,8 @@
 package com.back.mapper;
 
 import com.back.pojo.Document;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -12,6 +14,6 @@ public interface DocumentMapper {
      * @param doc
      * @return
      */
-    int insertDoc(Document doc);
+    int insertDoc( Document doc);
 
 }
