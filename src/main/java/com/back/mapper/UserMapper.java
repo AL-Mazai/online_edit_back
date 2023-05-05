@@ -2,12 +2,13 @@ package com.back.mapper;
 
 
 import com.back.pojo.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface UserMapper{
+public interface  UserMapper{
     /**
      * 查找所有用户
      * @return
@@ -49,5 +50,5 @@ public interface UserMapper{
      * @param password
      * @return
      */
-    int updatePassword(String password);
+    int updatePassword(@Param("email") String email, @Param("password") String password);
 }

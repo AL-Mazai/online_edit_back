@@ -45,4 +45,18 @@ public class UserController {
             return new ResponseEntity<>("用户已存在，可直接登录！", HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PostMapping("/changePassword")
+    @ResponseBody
+    public ResponseEntity<Object> changePassword(@RequestParam("email") String email,
+                                                 @RequestParam("oldPassword") String oldPassword,
+                                                 @RequestParam("newPassword") String newPassword){
+        boolean isSuccess = userService.changePassword(email,oldPassword,newPassword);
+        if (isSuccess) {
+            return new ResponseEntity<>("修改成功",HttpStatus.OK);
+        } else{
+            return new ResponseEntity<>("修改失败,请重试",HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

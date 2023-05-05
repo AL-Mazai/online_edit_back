@@ -41,4 +41,15 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public boolean changePassword(String email,String oldPassword,String newPassword){
+        User user = userMapper.selectUserByEmail(email);
+        if(user.getPassword().equals(oldPassword)){
+            int isChangeSuccess = userMapper.updatePassword(email,newPassword);
+            if (isChangeSuccess > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

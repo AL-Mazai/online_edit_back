@@ -25,4 +25,13 @@ public interface UserService {
      * @return 是否注册成功
      */
     boolean register(User user);
+
+    /**
+     *
+     * @param email
+     * @param oldPassword
+     * @param newPassword
+     * @return 是否修改成功
+     */
+    boolean changePassword(String email,String oldPassword,String newPassword);
 }
