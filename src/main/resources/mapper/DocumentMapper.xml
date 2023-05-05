@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.back.mapper.DocumentMapper">
+
+    <resultMap id="BaseResultMap" type="com.back.pojo.Document">
+            <id property="docId" column="doc_id" jdbcType="INTEGER"/>
+            <result property="docName" column="doc_name" jdbcType="VARCHAR"/>
+            <result property="docContent" column="doc_content" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="createdTime" column="created_time" jdbcType="DATE"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+    </resultMap>
+
+</mapper>
