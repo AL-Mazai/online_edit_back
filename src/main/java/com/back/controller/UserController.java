@@ -37,7 +37,7 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseBody
-    public ResponseEntity<Object> registerUser(@RequestBody User user) {
+    public ResponseEntity<Object> register(@RequestBody User user) {
         boolean isSuccess = userService.register(user);
         if (isSuccess) {
             return new ResponseEntity<>("注册成功！", HttpStatus.OK);
