@@ -14,6 +14,12 @@
         INSERT INTO users(user_id, user_name, password)
         VALUES (#{userId}, #{userName}, #{password})
     </insert>
+    <update id="updateUserInfo" parameterType="com.back.pojo.User">
+
+    </update>
+    <update id="updatePassword" parameterType="string">
+
+    </update>
 
     <select id="getAllUser" resultType="com.back.pojo.User">
         select * from users;

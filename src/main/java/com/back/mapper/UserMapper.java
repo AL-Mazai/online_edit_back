@@ -34,4 +34,20 @@ public interface UserMapper{
      * @return
      */
     int insertUser(User user);
+
+    /**
+     * 根据前端传过来的用户对象，修改用户的信息
+     * 赵负责
+     * @param user
+     * @return
+     */
+    int updateUserInfo(User user);
+
+    /**
+     * 前端传过来的新密码，后端更改密码
+     * 聂负责
+     * @param password
+     * @return
+     */
+    int updatePassword(String password);
 }

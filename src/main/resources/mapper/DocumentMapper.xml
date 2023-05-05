@@ -13,4 +13,8 @@
             <result property="status" column="status" jdbcType="TINYINT"/>
     </resultMap>
 
+    <insert id="insertDoc" parameterType="com.back.pojo.Document">
+
+    </insert>
+
 </mapper>
