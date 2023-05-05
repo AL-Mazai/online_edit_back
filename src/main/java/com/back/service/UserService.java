@@ -13,9 +13,16 @@ public interface UserService {
 
     /**
      * 用户登录
-     * @param username
+     * @param email
      * @param password
-     * @return
+     * @return 是否登陆成功
      */
-    User login(String username, String password);
+    User login(String email, String password);
+
+    /**
+     *
+     * @param user
+     * @return 是否注册成功
+     */
+    boolean register(User user);
 }

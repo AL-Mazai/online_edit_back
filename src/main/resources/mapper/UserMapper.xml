@@ -9,18 +9,21 @@
             <result property="userName" column="user_name" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
     </resultMap>
-    <update id="updatePasswordByUserId">
-        update users set password = #{newPassword} where user_id = #{id};
-    </update>
+
+    <insert id="insertUser" parameterType="com.back.pojo.User">
+        INSERT INTO users(user_id, user_name, password)
+        VALUES (#{userId}, #{userName}, #{password})
+    </insert>
 
     <select id="getAllUser" resultType="com.back.pojo.User">
         select * from users;
     </select>
-    <select id="login" resultType="java.lang.Integer">
 
+    <select id="selectUserByEmail" parameterType="string" resultType="com.back.pojo.User">
+        select * from users where email = #{email}
     </select>
-    <select id="getUserByUsername" parameterType="string" resultType="com.back.pojo.User">
-        select * from user where username = #{username}
+    <select id="selectUserById" resultType="com.back.pojo.User">
+        select * from users where user_id = #{userId}
     </select>
 
 </mapper>

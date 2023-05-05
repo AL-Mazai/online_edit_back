@@ -23,15 +23,26 @@ public class UserController {
 
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<Object> login(@RequestParam("username") String username,
+    public ResponseEntity<Object> login(@RequestParam("email") String email,
                                         @RequestParam("password") String password) {
-        User user = userService.login(username, password);
+        User user = userService.login(email, password);
         if (user != null) {
             // 登录成功
             return new ResponseEntity<>("登陆成功", HttpStatus.OK);
         } else {
             // 登录失败
             return new ResponseEntity<>("登陆失败", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @PostMapping("/register")
+    @ResponseBody
+    public ResponseEntity<Object> registerUser(@RequestBody User user) {
+        boolean isSuccess = userService.register(user);
+        if (isSuccess) {
+            return new ResponseEntity<>("注册成功！", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("用户已存在，可直接登录！", HttpStatus.BAD_REQUEST);
         }
     }
 }

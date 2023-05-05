@@ -14,20 +14,31 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public List<User> getAllUser(){
+    public List<User> getAllUser() {
         List<User> userList = userMapper.getAllUser();
         return userList;
     }
 
     @Override
-    public User login(String username, String password) {
+    public User login(String email, String password) {
         //通过用户名找到对应的用户
-        User user = userMapper.getUserByUsername(username);
+        User user = userMapper.selectUserByEmail(email);
         //比对
-        if(user != null && user.getPassword().equals(password)){
+        if (user != null && user.getPassword().equals(password)) {
             return user;
         }
         return null;
+    }
+
+    @Override
+    public boolean register(User user) {
+        if(userMapper.selectUserById(user.getUserId()) == null){
+            int isRegisterSuccess = userMapper.insertUser(user);
+            if(isRegisterSuccess > 0){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
