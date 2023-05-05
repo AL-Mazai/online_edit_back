@@ -19,4 +19,15 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
+    @Override
+    public User login(String username, String password) {
+        //通过用户名找到对应的用户
+        User user = userMapper.getUserByUsername(username);
+        //比对
+        if(user != null && user.getPassword().equals(password)){
+            return user;
+        }
+        return null;
+    }
+
 }

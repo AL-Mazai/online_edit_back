@@ -10,7 +10,11 @@ import java.util.List;
 public interface UserMapper{
     public List<User> getAllUser();
 
-    public int updatePasswordByUserId(Integer id, String newPassword);
 
-    public int login(String name, String password);
+    /**
+     *登录方法：先通过前端传过来的用户名找到用户，然后进行密码的比对
+     * @param username
+     * @return
+     */
+    User getUserByUsername(String username);
 }

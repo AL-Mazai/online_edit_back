@@ -19,5 +19,8 @@
     <select id="login" resultType="java.lang.Integer">
 
     </select>
+    <select id="getUserByUsername" parameterType="string" resultType="com.back.pojo.User">
+        select * from user where username = #{username}
+    </select>
 
 </mapper>

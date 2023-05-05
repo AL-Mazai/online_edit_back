@@ -10,4 +10,12 @@ public interface UserService {
      * @return
      */
     public List<User> getAllUser();
+
+    /**
+     * 用户登录
+     * @param username
+     * @param password
+     * @return
+     */
+    User login(String username, String password);
 }
