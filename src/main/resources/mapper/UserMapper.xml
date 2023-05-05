@@ -14,11 +14,13 @@
         INSERT INTO users(user_id, user_name, password)
         VALUES (#{userId}, #{userName}, #{password})
     </insert>
+
     <update id="updateUserInfo" parameterType="com.back.pojo.User">
 
     </update>
+
     <update id="updatePassword" parameterType="string">
-        update users set password=#{password} where email=#{email}
+        update users set password = #{password} where email=#{email}
     </update>
 
     <select id="getAllUser" resultType="com.back.pojo.User">
@@ -28,6 +30,7 @@
     <select id="selectUserByEmail" parameterType="string" resultType="com.back.pojo.User">
         select * from users where email = #{email}
     </select>
+
     <select id="selectUserById" resultType="com.back.pojo.User">
         select * from users where user_id = #{userId}
     </select>
