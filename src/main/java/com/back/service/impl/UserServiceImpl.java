@@ -52,4 +52,13 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+    @Override
+    public boolean changeUserInfo(User user) {
+        int isChangeSuccess = userMapper.updateUserInfo(user);
+        if(isChangeSuccess > 0){
+            return true;
+        }
+        return false;
+    }
 }

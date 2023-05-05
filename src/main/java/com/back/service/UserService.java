@@ -27,11 +27,18 @@ public interface UserService {
     boolean register(User user);
 
     /**
-     *
+     * 修改密码
      * @param email
      * @param oldPassword
      * @param newPassword
      * @return 是否修改成功
      */
     boolean changePassword(String email,String oldPassword,String newPassword);
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    boolean changeUserInfo(User user);
 }

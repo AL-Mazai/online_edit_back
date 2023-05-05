@@ -59,4 +59,14 @@ public class UserController {
         }
     }
 
+    @PostMapping("/changeInfo")
+    @ResponseBody
+    public ResponseEntity<Object> changeUserInfo(@RequestBody User user){
+        boolean isSuccess = userService.changeUserInfo(user);
+        if(isSuccess){
+            return new ResponseEntity<>("修改成功", HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>("修改失败，请重试",HttpStatus.BAD_REQUEST);
+        }
+    }
 }
