@@ -13,7 +13,7 @@ public interface  UserMapper{
      * 查找所有用户
      * @return
      */
-    public List<User> getAllUser();
+    List<User> selectAllUser();
 
     /**
      * 通过id查找用户
