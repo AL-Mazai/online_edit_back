@@ -19,8 +19,8 @@
     </resultMap>
 
     <insert id="insertUser" parameterType="User">
-        INSERT INTO users(user_id, user_name, password)
-        VALUES (#{userId}, #{userName}, #{password})
+        INSERT INTO users(user_id, user_name, password,email)
+        VALUES (#{userId}, #{userName}, #{password},#{email})
     </insert>
 
     <update id="updateUserInfo" parameterType="User">

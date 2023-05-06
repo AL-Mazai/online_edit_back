@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     public List<User> getAllUser() {
-        List<User> userList = userMapper.getAllUser();
+        List<User> userList = userMapper.selectAllUser();
         return userList;
     }
 
