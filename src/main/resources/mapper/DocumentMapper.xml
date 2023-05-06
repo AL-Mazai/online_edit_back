@@ -14,7 +14,8 @@
     </resultMap>
 
     <insert id="insertDoc" parameterType="com.back.pojo.Document">
-
+        insert into  document(doc_id,doc_name,doc_content,type,created_time,status)
+            value (#{docId},#{docName},#{docContent},#{type},#{createdTime},#{status})
     </insert>
 
 </mapper>
