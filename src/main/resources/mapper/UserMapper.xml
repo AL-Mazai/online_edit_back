@@ -10,25 +10,38 @@
             <result property="password" column="password" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="insertUser" parameterType="com.back.pojo.User">
+    <insert id="insertUser" parameterType="User">
         INSERT INTO users(user_id, user_name, password)
         VALUES (#{userId}, #{userName}, #{password})
     </insert>
-    <update id="updateUserInfo" parameterType="com.back.pojo.User">
 
+    <update id="updateUserInfo" parameterType="User">
+        update users
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName != null and userName != '' ">
+                user_name = #{userName},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            user_id = #{userId},
+        </trim>
+        where user_id = #{userId}
     </update>
+
     <update id="updatePassword" parameterType="string">
-        update users set password=#{password} where email=#{email}
+        update users set password = #{password} where email=#{email}
     </update>
 
-    <select id="getAllUser" resultType="com.back.pojo.User">
+    <select id="getAllUser" resultType="User">
         select * from users;
     </select>
 
-    <select id="selectUserByEmail" parameterType="string" resultType="com.back.pojo.User">
+    <select id="selectUserByEmail" parameterType="string" resultType="User">
         select * from users where email = #{email}
     </select>
-    <select id="selectUserById" resultType="com.back.pojo.User">
+
+    <select id="selectUserById" resultType="User">
         select * from users where user_id = #{userId}
     </select>
 

@@ -37,7 +37,7 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseBody
-    public ResponseEntity<Object> registerUser(@RequestBody User user) {
+    public ResponseEntity<Object> register(@RequestBody User user) {
         boolean isSuccess = userService.register(user);
         if (isSuccess) {
             return new ResponseEntity<>("注册成功！", HttpStatus.OK);
@@ -59,4 +59,14 @@ public class UserController {
         }
     }
 
+    @PostMapping("/changeInfo")
+    @ResponseBody
+    public ResponseEntity<Object> changeUserInfo(@RequestBody User user){
+        boolean isSuccess = userService.changeUserInfo(user);
+        if(isSuccess){
+            return new ResponseEntity<>("修改成功", HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>("修改失败，请重试",HttpStatus.BAD_REQUEST);
+        }
+    }
 }
