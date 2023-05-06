@@ -3,6 +3,8 @@ package com.back.mapper;
 import com.back.pojo.Document;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface DocumentMapper {
 

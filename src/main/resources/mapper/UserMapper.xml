@@ -5,9 +5,17 @@
 <mapper namespace="com.back.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.back.pojo.User">
-            <id property="userId" column="user_id" jdbcType="INTEGER"/>
-            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
-            <result property="password" column="password" jdbcType="VARCHAR"/>
+        <id property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <collection property="documentList" ofType="Document">
+            <id property="docId" column="doc_id" jdbcType="INTEGER"/>
+            <result property="docName" column="doc_name" jdbcType="VARCHAR"/>
+            <result property="docContent" column="doc_content" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="createdTime" column="created_time" jdbcType="DATE"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+        </collection>
     </resultMap>
 
     <insert id="insertUser" parameterType="User">
@@ -30,19 +38,26 @@
     </update>
 
     <update id="updatePassword" parameterType="string">
-        update users set password = #{password} where email=#{email}
+        update users
+        set password = #{password}
+        where email = #{email}
     </update>
 
-    <select id="getAllUser" resultType="User">
-        select * from users;
+    <select id="selectAllUser" resultType="User">
+        select *
+        from users;
     </select>
 
     <select id="selectUserByEmail" parameterType="string" resultType="User">
-        select * from users where email = #{email}
+        select *
+        from users
+        where email = #{email}
     </select>
 
     <select id="selectUserById" resultType="User">
-        select * from users where user_id = #{userId}
+        select *
+        from users
+        where user_id = #{userId}
     </select>
 
 </mapper>
