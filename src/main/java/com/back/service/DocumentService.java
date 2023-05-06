@@ -1,5 +1,7 @@
 package com.back.service;
 
-public interface DocumentService {
+import com.back.pojo.Document;
 
+public interface DocumentService {
+    boolean insertDocument(Document document);
 }

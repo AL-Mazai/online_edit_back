@@ -67,9 +67,9 @@ class BackApplicationTests {
         document.setCreatedTime(created_time);
         document.setStatus(status);
 
-        documentMapper.insertDoc(document);
+        int r=documentMapper.insertDoc(document);
         int id=document.getDocId();
-        System.out.println(id);
+        System.out.println(id+","+r);
 //        提交事务
 //        sqlSession.commit();
 //
