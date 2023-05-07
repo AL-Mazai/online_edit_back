@@ -25,7 +25,7 @@
     </sql>
 
     <insert id="insertUser" parameterType="User">
-        INSERT INTO users(user_id, user_name, password,email)
+        INSERT INTO users(user_id, user_name, email, password)
         VALUES (#{userId}, #{userName}, #{password},#{email})
     </insert>
 

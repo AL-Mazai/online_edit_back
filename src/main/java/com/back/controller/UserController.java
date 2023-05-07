@@ -34,24 +34,24 @@ public class UserController {
 
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<Object> login(@RequestParam("email") String email,
-                                        @RequestParam("password") String password) {
-        User user = userService.login(email, password);
+    public ResponseEntity<Object> login(@RequestBody User userParam) {
+        User user = userService.login(userParam.getEmail(), userParam.getPassword());
         if (user != null) {
             // 登录成功
             return new ResponseEntity<>("登陆成功", HttpStatus.OK);
         } else {
             // 登录失败
-            return new ResponseEntity<>("登陆失败", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("用户名或密码错误", HttpStatus.UNAUTHORIZED);
         }
     }
 
     @PostMapping("/register")
     @ResponseBody
     public ResponseEntity<Object> register(@RequestBody User user) {
+        System.out.println(user);
         boolean isSuccess = userService.register(user);
         if (isSuccess) {
-            return new ResponseEntity<>("注册成功！", HttpStatus.OK);
+            return new ResponseEntity<>("注册成功！", HttpStatus.OK);//200
         }else{
             return new ResponseEntity<>("用户已存在，可直接登录！", HttpStatus.BAD_REQUEST);
         }

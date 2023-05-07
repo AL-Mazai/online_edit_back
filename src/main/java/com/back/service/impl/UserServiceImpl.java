@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String email, String password) {
-        //通过用户名找到对应的用户
+        //通过邮箱找到对应的用户
         User user = userMapper.selectUserByEmail(email);
         //比对
         if (user != null && user.getPassword().equals(password)) {
