@@ -2,8 +2,6 @@ package com.back.mapper;
 
 import com.back.pojo.Document;
 import com.back.pojo.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,16 +19,15 @@ public interface DocumentMapper {
 
     /**
      * 前端用户查看创建的文档，并查看其中一个文档的所有参与者，传给后端的参数为userId和docId
-     * 何负责
-     * @param userId
+     * 何负责(已完成)
      * @param docId
      * @return
      */
-    List<User> selectAllUser(Integer userId, Integer docId);
+    List<User> selectAllUserByDoc(Integer docId);
 
     /**
      * 查看所有文档展示在前端主页（按时间降序排序）
-     * 何负责
+     * 何负责(已完成)
      * @return
      */
     List<Document> selectAllDoc();

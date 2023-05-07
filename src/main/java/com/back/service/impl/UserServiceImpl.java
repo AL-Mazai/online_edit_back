@@ -78,4 +78,10 @@ public class UserServiceImpl implements UserService {
         List<Document> documentList = userMapper.selectAllDocCreateByUser(userId);
         return documentList;
     }
+
+    @Override
+    public List<Document> getAllDocParticipate(Integer userId){
+        List<Document> documentList = userMapper.selectAllDocParticipate(userId);
+        return documentList;
+    }
 }
