@@ -56,4 +56,11 @@ public interface UserService {
      * @return
      */
     List<Document> getAllDocCreateByUser(Integer userId);
+
+    /**
+     * 查询当前用户参与的所有文档（不包括创建的文档）
+     * @param userId
+     * @return
+     */
+    List<Document> getAllDocParticipate(Integer userId);
 }

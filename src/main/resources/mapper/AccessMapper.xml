@@ -20,7 +20,7 @@
     </delete>
 
     <delete id="deleteUserOfDoc">
-
+        delete from access where doc_id=${docId} and user_id=${userId}
     </delete>
 
 
