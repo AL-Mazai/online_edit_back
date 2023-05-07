@@ -45,7 +45,7 @@ public interface DocumentMapper {
 
     /**
      * 前端主页搜索框输入关键字查询所有文档名称中包含关键字的文档
-     * 聂负责
+     * 聂负责（已完成）
      * @param name
      * @return
      */
