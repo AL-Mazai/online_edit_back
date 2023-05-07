@@ -75,7 +75,11 @@
     </select>
 
     <select id="selectAllDocParticipate" resultType="com.back.pojo.Document">
-
+        select distinct
+        <include refid="doc"></include>
+        from users u
+        join access ac on ac.user_id = #{userId} and ac.access_level = 2
+        join document doc on doc.doc_id = ac.doc_id;
     </select>
 
 </mapper>

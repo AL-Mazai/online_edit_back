@@ -24,9 +24,9 @@ public class UserController {
 
     @GetMapping("/getUserInfo")
     @ResponseBody
-    public ResponseEntity<Object> getUser(@RequestParam("userId") Integer userId){
+    public ResponseEntity<Object> getUser(@RequestParam("userId") Integer userId) {
         User user = userService.getUserInfo(userId);
-        if(user != null){
+        if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         return new ResponseEntity<>("没有该用户的信息", HttpStatus.BAD_REQUEST);
@@ -52,39 +52,50 @@ public class UserController {
         boolean isSuccess = userService.register(user);
         if (isSuccess) {
             return new ResponseEntity<>("注册成功！", HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>("用户已存在，可直接登录！", HttpStatus.BAD_REQUEST);
         }
     }
 
     @GetMapping("/getAllDoc")
     @ResponseBody
-    public List<Document> getAllDocCreateByUser(@RequestParam("userId") Integer userId){
+    public List<Document> getAllDocCreateByUser(@RequestParam("userId") Integer userId) {
         List<Document> documentList = userService.getAllDocCreateByUser(userId);
         return documentList;
+    }
+
+    @GetMapping("/getAllDocParticipate")
+    @ResponseBody
+    public ResponseEntity<Object> getAllDocParticipate(@RequestParam("userId") Integer userId) {
+        List<Document> documentList = userService.getAllDocParticipate(userId);
+        if (documentList == null) {
+            return new ResponseEntity<>("查找内容为空", HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(documentList, HttpStatus.OK);
+        }
     }
 
     @PostMapping("/changePassword")
     @ResponseBody
     public ResponseEntity<Object> changePassword(@RequestParam("email") String email,
                                                  @RequestParam("oldPassword") String oldPassword,
-                                                 @RequestParam("newPassword") String newPassword){
-        boolean isSuccess = userService.changePassword(email,oldPassword,newPassword);
+                                                 @RequestParam("newPassword") String newPassword) {
+        boolean isSuccess = userService.changePassword(email, oldPassword, newPassword);
         if (isSuccess) {
-            return new ResponseEntity<>("修改成功",HttpStatus.OK);
-        } else{
-            return new ResponseEntity<>("修改失败,请重试",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("修改成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("修改失败,请重试", HttpStatus.BAD_REQUEST);
         }
     }
 
     @PostMapping("/changeInfo")
     @ResponseBody
-    public ResponseEntity<Object> changeUserInfo(@RequestBody User user){
+    public ResponseEntity<Object> changeUserInfo(@RequestBody User user) {
         boolean isSuccess = userService.changeUserInfo(user);
-        if(isSuccess){
+        if (isSuccess) {
             return new ResponseEntity<>("修改成功", HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>("修改失败，请重试",HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>("修改失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
 }

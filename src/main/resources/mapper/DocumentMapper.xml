@@ -35,7 +35,7 @@
     </select>
 
     <select id="selectAllDocByName" resultType="com.back.pojo.Document">
-
+        select * from document where doc_name like '%${name}%'
     </select>
 
 </mapper>
