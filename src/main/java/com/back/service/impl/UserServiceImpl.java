@@ -1,11 +1,13 @@
 package com.back.service.impl;
 
 import com.back.mapper.UserMapper;
+import com.back.pojo.Document;
 import com.back.pojo.User;
 import com.back.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,5 +62,20 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public User getUserInfo(Integer userId) {
+        User user = userMapper.selectUserById(userId);
+        if(user != null){
+            return user;
+        }
+        return null;
+    }
+
+    @Override
+    public List<Document> getAllDocCreateByUser(Integer userId) {
+        List<Document> documentList = userMapper.selectAllDocCreateByUser(userId);
+        return documentList;
     }
 }

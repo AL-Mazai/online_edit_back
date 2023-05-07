@@ -11,11 +11,31 @@
             <result property="type" column="type" jdbcType="VARCHAR"/>
             <result property="createdTime" column="created_time" jdbcType="DATE"/>
             <result property="status" column="status" jdbcType="TINYINT"/>
+        <collection property="userList" ofType="User">
+            <id property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+        </collection>
     </resultMap>
 
     <insert id="insertDoc" parameterType="com.back.pojo.Document">
         insert into  document(doc_id,doc_name,doc_content,type,created_time,status)
             value (#{docId},#{docName},#{docContent},#{type},#{createdTime},#{status})
     </insert>
+    <delete id="deleteDoc">
+
+    </delete>
+
+    <select id="selectAllUser" resultType="com.back.pojo.User">
+
+    </select>
+    <select id="selectAllDoc" resultType="com.back.pojo.Document">
+
+    </select>
+
+    <select id="selectAllDocByName" resultType="com.back.pojo.Document">
+
+    </select>
 
 </mapper>

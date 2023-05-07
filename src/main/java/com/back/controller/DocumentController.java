@@ -16,7 +16,7 @@ public class DocumentController {
     @PostMapping("/insertDocument")
     @ResponseBody
     public ResponseEntity<Object> insertDocument(@RequestBody Document document){
-        Boolean isSuccess=documentService.insertDocument(document);
+        Boolean isSuccess=documentService.addDocument(document);
         if(isSuccess==true){
             return new ResponseEntity<>("插入成功", HttpStatus.OK);
         }else {

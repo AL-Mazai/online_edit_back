@@ -7,6 +7,7 @@
     <resultMap id="BaseResultMap" type="com.back.pojo.User">
         <id property="userId" column="user_id" jdbcType="INTEGER"/>
         <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
         <collection property="documentList" ofType="Document">
             <id property="docId" column="doc_id" jdbcType="INTEGER"/>
@@ -17,6 +18,11 @@
             <result property="status" column="status" jdbcType="TINYINT"/>
         </collection>
     </resultMap>
+
+    <sql id="doc">
+        doc.doc_id, doc.doc_name, doc.doc_content, doc.type,
+        doc.created_time, doc.status
+    </sql>
 
     <insert id="insertUser" parameterType="User">
         INSERT INTO users(user_id, user_name, password,email)
@@ -55,9 +61,21 @@
     </select>
 
     <select id="selectUserById" resultType="User">
-        select *
+        select user_id, user_name, email
         from users
         where user_id = #{userId}
+    </select>
+
+    <select id="selectAllDocCreateByUser" resultType="com.back.pojo.Document">
+        select distinct
+        <include refid="doc"></include>
+        from users u
+        join access ac on ac.user_id = #{userId} and ac.access_level = 1
+        join document doc on doc.doc_id = ac.doc_id;
+    </select>
+
+    <select id="selectAllDocParticipate" resultType="com.back.pojo.Document">
+
     </select>
 
 </mapper>

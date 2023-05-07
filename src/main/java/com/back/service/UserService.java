@@ -1,6 +1,7 @@
 package com.back.service;
 
 
+import com.back.pojo.Document;
 import com.back.pojo.User;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface UserService {
      * 查找所有用户(测试方法)
      * @return
      */
-    public List<User> getAllUser();
+    List<User> getAllUser();
 
     /**
      * 用户登录
@@ -41,4 +42,18 @@ public interface UserService {
      * @return
      */
     boolean changeUserInfo(User user);
+
+    /**
+     * 根据id查看用户信息
+     * @param userId
+     * @return
+     */
+    User getUserInfo(Integer userId);
+
+    /**
+     * 查询当前用户所有创建的所有文档
+     * @param userId
+     * @return
+     */
+    List<Document> getAllDocCreateByUser(Integer userId);
 }

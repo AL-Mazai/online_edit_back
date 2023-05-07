@@ -11,5 +11,17 @@
             <result property="accessLevel" column="access_level" jdbcType="INTEGER"/>
     </resultMap>
 
+    <insert id="addUserOfDoc">
+
+    </insert>
+
+    <delete id="quitDoc">
+
+    </delete>
+
+    <delete id="deleteUserOfDoc">
+
+    </delete>
+
 
 </mapper>

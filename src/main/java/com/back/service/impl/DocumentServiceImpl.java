@@ -11,7 +11,7 @@ public class DocumentServiceImpl implements DocumentService {
     @Autowired
     private DocumentMapper documentMapper;
     @Override
-    public boolean insertDocument(Document document) {
+    public boolean addDocument(Document document) {
         if(documentMapper.insertDoc(document)>0){
             return true;
         }else  return false;

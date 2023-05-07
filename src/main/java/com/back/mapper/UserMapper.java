@@ -1,6 +1,7 @@
 package com.back.mapper;
 
 
+import com.back.pojo.Document;
 import com.back.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -38,7 +39,7 @@ public interface  UserMapper{
 
     /**
      * 根据前端传过来的用户对象，修改用户的信息
-     * 赵负责
+     * 赵负责（已完成）
      * @param user
      * @return
      */
@@ -46,9 +47,26 @@ public interface  UserMapper{
 
     /**
      * 前端传过来的新密码，后端更改密码
-     * 聂负责
+     * 聂负责（已完成）
      * @param password
      * @return
      */
     int updatePassword(@Param("email") String email, @Param("password") String password);
+
+    /**
+     * 根据用户id查看当前用户创建的所有文档（不包括用户参与的文档）
+     * 赵负责
+     * @param userId
+     * @return
+     */
+    List<Document> selectAllDocCreateByUser(Integer userId);
+
+    /**
+     * 前端用户查看目前参与的所有文档（不包括用户自己创建的文档）(前端可添加按钮方便用户决定是否退出，编辑查看等)
+     * 聂负责
+     * @param userId
+     * @return
+     */
+    List<Document> selectAllDocParticipate(Integer userId);
+
 }

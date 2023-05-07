@@ -1,5 +1,6 @@
 package com.back.controller;
 
+import com.back.pojo.Document;
 import com.back.pojo.User;
 import com.back.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllUser")
     @ResponseBody
     public List<User> ListUser() {
         return userService.getAllUser();
+    }
+
+    @GetMapping("/getUserInfo")
+    @ResponseBody
+    public ResponseEntity<Object> getUser(@RequestParam("userId") Integer userId){
+        User user = userService.getUserInfo(userId);
+        if(user != null){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("没有该用户的信息", HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/login")
@@ -44,6 +55,13 @@ public class UserController {
         }else{
             return new ResponseEntity<>("用户已存在，可直接登录！", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/getAllDoc")
+    @ResponseBody
+    public List<Document> getAllDocCreateByUser(@RequestParam("userId") Integer userId){
+        List<Document> documentList = userService.getAllDocCreateByUser(userId);
+        return documentList;
     }
 
     @PostMapping("/changePassword")
