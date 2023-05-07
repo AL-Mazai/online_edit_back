@@ -24,14 +24,14 @@
             value (#{docId},#{docName},#{docContent},#{type},#{createdTime},#{status})
     </insert>
     <delete id="deleteDoc">
-
+        DELETE from document where doc_id=#{docId}
     </delete>
 
-    <select id="selectAllUser" resultType="com.back.pojo.User">
-
+    <select id="selectAllUserByDoc" resultType="com.back.pojo.User">
+        select users.* from users,access where users.user_id=access.user_id and access.doc_id=#{docId}
     </select>
     <select id="selectAllDoc" resultType="com.back.pojo.Document">
-
+        SELECT * from document ORDER BY created_time DESC
     </select>
 
     <select id="selectAllDocByName" resultType="com.back.pojo.Document">

@@ -75,5 +75,10 @@ class BackApplicationTests {
 //
 //        sqlSession.close();
     }
+    @Test
+    public void testSelect(){
+        List<Document> list=documentMapper.selectAllDoc();
+        System.out.println(list);
+    }
 
 }
