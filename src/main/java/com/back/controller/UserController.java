@@ -57,11 +57,15 @@ public class UserController {
         }
     }
 
-    @GetMapping("/getAllDoc")
+    @GetMapping("/getAllDocCreate")
     @ResponseBody
-    public List<Document> getAllDocCreateByUser(@RequestParam("userId") Integer userId) {
+    public ResponseEntity<Object> getAllDocCreateByUser(@RequestParam("userId") Integer userId) {
         List<Document> documentList = userService.getAllDocCreateByUser(userId);
-        return documentList;
+        if (documentList == null) {
+            return new ResponseEntity<>("您没有创建任何文档", HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(documentList, HttpStatus.OK);
+        }
     }
 
     @GetMapping("/getAllDocParticipate")

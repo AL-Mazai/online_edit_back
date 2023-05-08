@@ -11,8 +11,9 @@
             <result property="accessLevel" column="access_level" jdbcType="INTEGER"/>
     </resultMap>
 
-    <insert id="addUserOfDoc">
-
+    <insert id="insertUserOfDoc">
+        insert into access(access_id, doc_id, user_id, access_level)
+        values (#{accessId}, #{docId}, #{userId}, #{accessLevel})
     </insert>
 
     <delete id="quitDoc">
@@ -20,8 +21,7 @@
     </delete>
 
     <delete id="deleteUserOfDoc">
-        delete from access where doc_id=${docId} and user_id=${userId}
+        delete from access where doc_id = ${docId} and user_id = ${userId}
     </delete>
-
 
 </mapper>

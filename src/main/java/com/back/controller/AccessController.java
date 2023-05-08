@@ -1,5 +1,6 @@
 package com.back.controller;
 
+import com.back.pojo.Access;
 import com.back.service.AccessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,17 @@ import org.springframework.web.bind.annotation.*;
 public class AccessController {
     @Autowired
     private AccessService accessService;
+
+    @PostMapping("/inviteUserOfDoc")
+    @ResponseBody
+    public ResponseEntity<Object> inviteUserOfDoc(@RequestBody Access access){
+        boolean isSuccess = accessService.inviteUserOfDoc(access);
+        if (isSuccess) {
+            return new ResponseEntity<>("邀请成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("邀请失败", HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @DeleteMapping("/deleteUserOfDoc")
     @ResponseBody

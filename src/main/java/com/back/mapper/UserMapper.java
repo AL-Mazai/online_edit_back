@@ -27,7 +27,6 @@ public interface UserMapper {
 
     /**
      * 登录：先通过前端传过来的邮箱找到用户，然后进行密码的比对
-     *
      * @param email
      * @return
      */
