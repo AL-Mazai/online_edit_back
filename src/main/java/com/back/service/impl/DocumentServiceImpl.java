@@ -23,7 +23,7 @@ public class DocumentServiceImpl implements DocumentService {
 
     @Override
     public List<User> selectAllUserOfDoc(int docId) {
-        List<User> list = documentMapper.selectAllUserByDoc(docId);
+        List<User> list = documentMapper.selectAllUserOfDoc(docId);
         return list;
     }
 

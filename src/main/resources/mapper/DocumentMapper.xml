@@ -30,7 +30,7 @@
         where doc_id = #{docId}
     </delete>
 
-    <select id="selectAllUserByDoc" resultType="com.back.pojo.User">
+    <select id="selectAllUserOfDoc" resultType="com.back.pojo.User">
         select users.*
         from users,
              access

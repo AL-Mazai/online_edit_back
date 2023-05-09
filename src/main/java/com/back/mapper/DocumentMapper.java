@@ -23,7 +23,7 @@ public interface DocumentMapper {
      * @param docId
      * @return
      */
-    List<User> selectAllUserByDoc(Integer docId);
+    List<User> selectAllUserOfDoc(Integer docId);
 
     /**
      * 查看所有文档展示在前端主页（按时间降序排序）
