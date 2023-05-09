@@ -9,8 +9,16 @@ public interface AccessService {
      * @return
      */
     boolean inviteUserOfDoc(Access access);
+
     /**
-     * 剔除文档参与者
+     * 退出参与的文档（用户角度）
+     * @param userId
+     * @param docId
+     * @return
+     */
+    boolean quitDoc(Integer userId, Integer docId);
+    /**
+     * 剔除文档参与者（创建者角度）
      *
      * @param userId
      * @param docId

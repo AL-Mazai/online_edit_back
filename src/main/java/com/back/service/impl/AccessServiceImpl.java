@@ -20,6 +20,14 @@ public class AccessServiceImpl implements AccessService {
     }
 
     @Override
+    public boolean quitDoc(Integer userId, Integer docId) {
+        if (accessMapper.quitDoc(userId, docId) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean deleteUserOfDoc(Integer userId, Integer docId) {
         if (accessMapper.deleteUserOfDoc(userId, docId) > 0) {
             return true;

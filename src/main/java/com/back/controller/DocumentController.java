@@ -27,22 +27,23 @@ public class DocumentController {
         }
     }
 
-    @GetMapping("/selectAllUserByDocument")
+    @GetMapping("/selectAllUserOfDocument")
     @ResponseBody
-    public List<User> selectAllUserByDoc(int docId){
-        List<User> list=documentService.selectAllUserByDoc(docId);
-        return list;
-    }
-    @GetMapping("/selectAllDocument")
-    @ResponseBody
-    public List<Document> selectAllDoc(){
-        List<Document> list=documentService.selectAllDocument();
+    public List<User> selectAllUserOfDoc(int docId) {
+        List<User> list = documentService.selectAllUserOfDoc(docId);
         return list;
     }
 
-    @GetMapping("/deleteDocument")
+    @GetMapping("/selectAllDocument")
     @ResponseBody
-    public ResponseEntity<Object> deleteDoc(int docId){
+    public List<Document> selectAllDoc() {
+        List<Document> list = documentService.selectAllDocument();
+        return list;
+    }
+
+    @DeleteMapping("/deleteDocument")
+    @ResponseBody
+    public ResponseEntity<Object> deleteDoc(int docId) {
 
         Boolean isSuccess = documentService.deleteDoc(docId);
         if (isSuccess == true) {
@@ -51,7 +52,6 @@ public class DocumentController {
             return new ResponseEntity<>("删除失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
-
 
 
 //    @GetMapping("/selectAllDocByName")

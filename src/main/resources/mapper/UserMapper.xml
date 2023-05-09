@@ -9,14 +9,14 @@
         <result property="userName" column="user_name" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
-        <collection property="documentList" ofType="Document">
-            <id property="docId" column="doc_id" jdbcType="INTEGER"/>
-            <result property="docName" column="doc_name" jdbcType="VARCHAR"/>
-            <result property="docContent" column="doc_content" jdbcType="VARCHAR"/>
-            <result property="type" column="type" jdbcType="VARCHAR"/>
-            <result property="createdTime" column="created_time" jdbcType="DATE"/>
-            <result property="status" column="status" jdbcType="TINYINT"/>
-        </collection>
+<!--        <collection property="documentList" ofType="Document">-->
+<!--            <id property="docId" column="doc_id" jdbcType="INTEGER"/>-->
+<!--            <result property="docName" column="doc_name" jdbcType="VARCHAR"/>-->
+<!--            <result property="docContent" column="doc_content" jdbcType="VARCHAR"/>-->
+<!--            <result property="type" column="type" jdbcType="VARCHAR"/>-->
+<!--            <result property="createdTime" column="created_time" jdbcType="DATE"/>-->
+<!--            <result property="status" column="status" jdbcType="TINYINT"/>-->
+<!--        </collection>-->
     </resultMap>
 
     <sql id="doc">

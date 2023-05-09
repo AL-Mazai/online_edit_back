@@ -5,37 +5,47 @@
 <mapper namespace="com.back.mapper.DocumentMapper">
 
     <resultMap id="BaseResultMap" type="com.back.pojo.Document">
-            <id property="docId" column="doc_id" jdbcType="INTEGER"/>
-            <result property="docName" column="doc_name" jdbcType="VARCHAR"/>
-            <result property="docContent" column="doc_content" jdbcType="VARCHAR"/>
-            <result property="type" column="type" jdbcType="VARCHAR"/>
-            <result property="createdTime" column="created_time" jdbcType="DATE"/>
-            <result property="status" column="status" jdbcType="TINYINT"/>
-        <collection property="userList" ofType="User">
-            <id property="userId" column="user_id" jdbcType="INTEGER"/>
-            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
-            <result property="email" column="email" jdbcType="VARCHAR"/>
-            <result property="password" column="password" jdbcType="VARCHAR"/>
-        </collection>
+        <id property="docId" column="doc_id" jdbcType="INTEGER"/>
+        <result property="docName" column="doc_name" jdbcType="VARCHAR"/>
+        <result property="docContent" column="doc_content" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="DATE"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <!--        <collection property="userList" ofType="User">-->
+        <!--            <id property="userId" column="user_id" jdbcType="INTEGER"/>-->
+        <!--            <result property="userName" column="user_name" jdbcType="VARCHAR"/>-->
+        <!--            <result property="email" column="email" jdbcType="VARCHAR"/>-->
+        <!--            <result property="password" column="password" jdbcType="VARCHAR"/>-->
+        <!--        </collection>-->
     </resultMap>
 
     <insert id="insertDoc" parameterType="com.back.pojo.Document">
-        insert into  document(doc_id,doc_name,doc_content,type,created_time,status)
+        insert into document(doc_id, doc_name, doc_content, type, created_time, status)
             value (#{docId},#{docName},#{docContent},#{type},#{createdTime},#{status})
     </insert>
     <delete id="deleteDoc">
-        DELETE from document where doc_id=#{docId}
+        DELETE
+        from document
+        where doc_id = #{docId}
     </delete>
 
     <select id="selectAllUserByDoc" resultType="com.back.pojo.User">
-        select users.* from users,access where users.user_id=access.user_id and access.doc_id=#{docId}
+        select users.*
+        from users,
+             access
+        where users.user_id = access.user_id
+          and access.doc_id = #{docId}
     </select>
     <select id="selectAllDoc" resultType="com.back.pojo.Document">
-        SELECT * from document ORDER BY created_time DESC
+        SELECT *
+        from document
+        ORDER BY created_time DESC
     </select>
 
     <select id="selectAllDocByName" resultType="com.back.pojo.Document">
-        select * from document where doc_name like '%${name}%'
+        select *
+        from document
+        where doc_name like '%${name}%'
     </select>
 
 </mapper>

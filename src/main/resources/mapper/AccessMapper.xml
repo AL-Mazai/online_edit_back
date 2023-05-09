@@ -17,7 +17,7 @@
     </insert>
 
     <delete id="quitDoc">
-
+        delete from access where doc_id = #{docId} and user_id = #{userId}
     </delete>
 
     <delete id="deleteUserOfDoc">

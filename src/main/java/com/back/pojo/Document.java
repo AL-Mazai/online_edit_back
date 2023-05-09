@@ -26,5 +26,5 @@ public class Document implements Serializable {
     private boolean status;
 
     //多对多的映射关系：一个文档可由多个用户参与
-    private List<User> userList;
+//    private List<User> userList;
 }

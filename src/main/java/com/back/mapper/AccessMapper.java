@@ -14,7 +14,7 @@ public interface AccessMapper {
      * @param docId
      * @return
      */
-    int quitDoc(Integer userId, Integer docId);
+    int quitDoc(@Param("userId") Integer userId, @Param("docId") Integer docId);
 
     /**
      * 前端用户查看创建的文档，并查看某个文档的参与者，然后可以邀请其他成员，传给后端的参数是该次邀请的id、参与者Id、该文档id、授予该参与者的权限,然后封装成一个权限对象传给后端

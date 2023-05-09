@@ -24,6 +24,18 @@ public class AccessController {
         }
     }
 
+    @DeleteMapping("/quitDoc")
+    @ResponseBody
+    public ResponseEntity<Object> quitDoc(@RequestParam("userId") Integer userId,
+                                          @RequestParam("docId") Integer docId) {
+        boolean isSuccess = accessService.quitDoc(userId, docId);
+        if (isSuccess) {
+            return new ResponseEntity<>("退出成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("退出失败", HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @DeleteMapping("/deleteUserOfDoc")
     @ResponseBody
     public ResponseEntity<Object> deleteUserOfDoc(@RequestParam("userId") Integer userId,
