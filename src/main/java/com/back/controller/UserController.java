@@ -37,6 +37,7 @@ public class UserController {
     public ResponseEntity<Object> login(@RequestBody User userParam) {
         User user = userService.login(userParam.getEmail(), userParam.getPassword());
         if (user != null) {
+            System.out.println("登录成功....");
             // 登录成功
             return new ResponseEntity<>("登陆成功", HttpStatus.OK);
         } else {

@@ -64,10 +64,12 @@ public class DocumentController {
     @GetMapping("/selectAllDocByName")
     @ResponseBody
     public ResponseEntity<Object> selectAllDocByName(@RequestParam("name") String name) {
+//        System.out.println("正在查找....");
         List<Document> allDocument = documentService.getAllDocByName(name);
         if (allDocument == null) {
             return new ResponseEntity<>("没有查找到内容", HttpStatus.NO_CONTENT);
         } else {
+//            System.out.println("成功....");
             return new ResponseEntity<>(allDocument, HttpStatus.OK);
         }
     }
