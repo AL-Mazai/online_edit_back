@@ -18,7 +18,7 @@ public interface DocumentMapper {
     int insertDoc( Document doc);
 
     /**
-     * 前端用户查看创建的文档，并查看其中一个文档的所有参与者，传给后端的参数为userId和docId
+     * 前端用户查看创建的文档，并查看其中一个文档的所有参与者，传给后端的参数为docId
      * 何负责(已完成)
      * @param docId
      * @return
@@ -34,7 +34,7 @@ public interface DocumentMapper {
 
     /**
      * 删除文档，只有创建者才能删除，并且删除后，对应的权限表中以该文档作为外键的元组应当全部删除（级联删除）
-     * 何负责
+     * 何负责（已完成）
      * @param docId
      * @return
      */

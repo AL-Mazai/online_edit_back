@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -44,7 +43,6 @@ public class DocumentController {
     @DeleteMapping("/deleteDocument")
     @ResponseBody
     public ResponseEntity<Object> deleteDoc(int docId) {
-
         Boolean isSuccess = documentService.deleteDoc(docId);
         if (isSuccess == true) {
             return new ResponseEntity<>("删除成功", HttpStatus.OK);

@@ -34,9 +34,8 @@ public class UserController {
 
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<Object> login(@RequestParam("email") String email,
-                                        @RequestParam("password") String password) {
-        User user = userService.login(email, password);
+    public ResponseEntity<Object> login(@RequestBody User userParam) {
+        User user = userService.login(userParam.getEmail(), userParam.getPassword());
         if (user != null) {
             // 登录成功
             return new ResponseEntity<>("登陆成功", HttpStatus.OK);
