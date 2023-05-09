@@ -41,4 +41,9 @@ public class DocumentServiceImpl implements DocumentService {
             return false;
         }
     }
+
+    @Override
+    public List<Document> getAllDocByName(String name) {
+        return documentMapper.selectAllDocByName(name);
+    }
 }

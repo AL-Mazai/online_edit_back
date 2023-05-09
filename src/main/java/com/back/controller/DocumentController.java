@@ -52,14 +52,14 @@ public class DocumentController {
     }
 
 
-//    @GetMapping("/selectAllDocByName")
-//    @ResponseBody
-//    public ResponseEntity<Object> selectAllDocByName(@RequestParam("name") String name) {
-//        List<Document> allDocument = documentService.getAllDocByName(name);
-//        if (allDocument == null) {
-//            return new ResponseEntity<>("没有查找到内容", HttpStatus.NO_CONTENT);
-//        } else {
-//            return new ResponseEntity<>(allDocument, HttpStatus.OK);
-//        }
-//    }
+    @GetMapping("/selectAllDocByName")
+    @ResponseBody
+    public ResponseEntity<Object> selectAllDocByName(@RequestParam("name") String name) {
+        List<Document> allDocument = documentService.getAllDocByName(name);
+        if (allDocument == null) {
+            return new ResponseEntity<>("没有查找到内容", HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(allDocument, HttpStatus.OK);
+        }
+    }
 }
