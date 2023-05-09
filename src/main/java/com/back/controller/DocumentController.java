@@ -28,21 +28,30 @@ public class DocumentController {
 
     @GetMapping("/selectAllUserOfDocument")
     @ResponseBody
-    public List<User> selectAllUserOfDoc(int docId) {
+    public ResponseEntity<List<User>> selectAllUserOfDoc(@RequestParam int docId) {
         List<User> list = documentService.selectAllUserOfDoc(docId);
-        return list;
+        if(list==null){
+            return ResponseEntity.notFound().build();
+        }else {
+            return ResponseEntity.ok(list);
+        }
+
     }
 
     @GetMapping("/selectAllDocument")
     @ResponseBody
-    public List<Document> selectAllDoc() {
+    public ResponseEntity<List<Document>> selectAllDoc() {
         List<Document> list = documentService.selectAllDocument();
-        return list;
+        if(list==null){
+            return ResponseEntity.notFound().build();
+        }else {
+            return ResponseEntity.ok(list);
+        }
     }
 
     @DeleteMapping("/deleteDocument")
     @ResponseBody
-    public ResponseEntity<Object> deleteDoc(int docId) {
+    public ResponseEntity<Object> deleteDoc(@RequestParam int docId) {
         Boolean isSuccess = documentService.deleteDoc(docId);
         if (isSuccess == true) {
             return new ResponseEntity<>("删除成功", HttpStatus.OK);
