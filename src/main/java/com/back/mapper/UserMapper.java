@@ -33,7 +33,7 @@ public interface UserMapper {
     User selectUserByEmail(String email);
 
     /**
-     * 注册（添加用户）：前端填好注册的表单信息后将其封装成一个JavaScript对象，然后通过Ajax请求将其发送到后端。后端将接收到的JSON格式的数据解析成Java对象，最后根据具体业务逻辑将这些数据保存到数据库中
+     * 注册（添加用户）
      *
      * @param user
      * @return
@@ -41,7 +41,7 @@ public interface UserMapper {
     int insertUser(User user);
 
     /**
-     * 根据前端传过来的用户对象，修改用户的信息
+     * 修改用户的信息
      * 赵负责（已完成）
      *
      * @param user
@@ -50,7 +50,7 @@ public interface UserMapper {
     int updateUserInfo(User user);
 
     /**
-     * 前端传过来的新密码，后端更改密码
+     * 更改用户密码
      * 聂负责（已完成）
      *
      * @param password
@@ -59,7 +59,7 @@ public interface UserMapper {
     int updatePassword(@Param("email") String email, @Param("password") String password);
 
     /**
-     * 根据用户id查看当前用户创建的所有文档（不包括用户参与的文档）
+     * 查看当前用户创建的所有文档
      * 赵负责（已完成）
      *
      * @param userId
@@ -68,7 +68,7 @@ public interface UserMapper {
     List<Document> selectAllDocCreateByUser(Integer userId);
 
     /**
-     * 前端用户查看目前参与的所有文档（不包括用户自己创建的文档）(前端可添加按钮方便用户决定是否退出，编辑查看等)
+     * 用户查看目前参与的所有文档
      * 聂负责（已完成）
      *
      * @param userId
