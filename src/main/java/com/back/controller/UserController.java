@@ -71,12 +71,12 @@ public class UserController {
     @GetMapping("/getAllDocParticipate")
     @ResponseBody
     public ResponseEntity<Object> getAllDocParticipate(@RequestParam("userId") Integer userId) {
-        System.out.println(userId);
+//        System.out.println(userId);
         List<Document> documentList = userService.getAllDocParticipate(userId);
         if (documentList == null) {
             return new ResponseEntity<>("查找内容为空", HttpStatus.NO_CONTENT);
         } else {
-            System.out.println(documentList);
+//            System.out.println(documentList);
             return new ResponseEntity<>(documentList, HttpStatus.OK);
         }
     }

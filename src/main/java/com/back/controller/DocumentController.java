@@ -21,9 +21,9 @@ public class DocumentController {
     public ResponseEntity<Object> insertDocument(@RequestBody Document document) {
         Boolean isSuccess = documentService.addDocument(document);
         if (isSuccess == true) {
-            return new ResponseEntity<>("插入成功", HttpStatus.OK);
+            return new ResponseEntity<>("新建成功", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("插入失败，请重试", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("新建失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
 

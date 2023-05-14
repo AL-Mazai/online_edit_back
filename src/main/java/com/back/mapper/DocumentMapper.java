@@ -42,7 +42,7 @@ public interface DocumentMapper {
 
     /**
      * 前端主页搜索框输入关键字查询符合的所有文档
-     * 聂负责
+     * 聂负责（已完成）
      * @param name
      * @return
      */
