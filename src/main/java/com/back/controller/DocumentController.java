@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -28,11 +29,11 @@ public class DocumentController {
 
     @GetMapping("/selectAllUserOfDocument")
     @ResponseBody
-    public ResponseEntity<List<User>> selectAllUserOfDoc(@RequestParam int docId) {
+    public ResponseEntity<List<User>> selectAllUserOfDoc(@RequestParam("docId") int docId) {
         List<User> list = documentService.selectAllUserOfDoc(docId);
-        if(list==null){
+        if (list == null) {
             return ResponseEntity.notFound().build();
-        }else {
+        } else {
             return ResponseEntity.ok(list);
         }
 
@@ -42,9 +43,9 @@ public class DocumentController {
     @ResponseBody
     public ResponseEntity<List<Document>> selectAllDoc() {
         List<Document> list = documentService.selectAllDocument();
-        if(list==null){
+        if (list == null) {
             return ResponseEntity.notFound().build();
-        }else {
+        } else {
             return ResponseEntity.ok(list);
         }
     }

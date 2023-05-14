@@ -71,7 +71,8 @@
         <include refid="doc"></include>
         from users u
         join access ac on ac.user_id = #{userId} and ac.access_level = 1
-        join document doc on doc.doc_id = ac.doc_id;
+        join document doc on doc.doc_id = ac.doc_id
+        ORDER BY doc.doc_id ASC
     </select>
 
     <select id="selectAllDocParticipate" resultType="com.back.pojo.Document">
