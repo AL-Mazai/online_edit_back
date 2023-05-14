@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -37,7 +38,6 @@ public class UserController {
     public ResponseEntity<Object> login(@RequestBody User userParam) {
         User user = userService.login(userParam.getEmail(), userParam.getPassword());
         if (user != null) {
-            System.out.println("登录成功....");
             // 登录成功
             return new ResponseEntity<>("登陆成功", HttpStatus.OK);
         } else {
@@ -81,10 +81,8 @@ public class UserController {
 
     @PostMapping("/changePassword")
     @ResponseBody
-    public ResponseEntity<Object> changePassword(@RequestParam("email") String email,
-                                                 @RequestParam("oldPassword") String oldPassword,
-                                                 @RequestParam("newPassword") String newPassword) {
-        boolean isSuccess = userService.changePassword(email, oldPassword, newPassword);
+    public ResponseEntity<Object> changePassword(@RequestBody Map<String,String> map) {
+        boolean isSuccess = userService.changePassword(map.get("email"), map.get("oldPassword"), map.get("newPassword"));
         if (isSuccess) {
             return new ResponseEntity<>("修改成功", HttpStatus.OK);
         } else {
