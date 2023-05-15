@@ -8,7 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
+import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/doc")
@@ -73,5 +77,22 @@ public class DocumentController {
 //            System.out.println("成功....");
             return new ResponseEntity<>(allDocument, HttpStatus.OK);
         }
+    }
+
+    //分页
+    @GetMapping("/selectFileByPage")
+    public ResponseEntity<Map<String, Object>> selectFilePage(
+            @RequestParam int pageNum,
+            @RequestParam int pageSize,
+            @RequestParam String fileName,
+            @RequestParam String type
+    ) {
+        pageNum = (pageNum - 1) * pageSize;
+        List<Document> files = documentService.selectFileByPage(pageNum, pageSize, fileName, type);
+        int total = documentService.selectFileCount(fileName, type);
+        Map<String, Object> res = new HashMap<>();
+        res.put("total", total);
+        res.put("docList", files);
+        return ResponseEntity.ok(res);
     }
 }

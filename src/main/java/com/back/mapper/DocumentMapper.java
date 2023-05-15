@@ -2,8 +2,10 @@ package com.back.mapper;
 
 import com.back.pojo.Document;
 import com.back.pojo.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.nio.file.Files;
 import java.util.List;
 
 @Repository
@@ -15,7 +17,7 @@ public interface DocumentMapper {
      * @param doc
      * @return
      */
-    int insertDoc( Document doc);
+    int insertDoc(Document doc);
 
     /**
      * 查看某个文档的所有参与者
@@ -47,4 +49,28 @@ public interface DocumentMapper {
      * @return
      */
     List<Document> selectAllDocByName(String name);
+
+
+    /**
+     * 查找总文档数
+     * @param fileName
+     * @param type
+     * @return
+     */
+    int selectFileCount(@Param("fileName") String fileName,
+                        @Param("type") String type);
+
+    /**
+     * 分页展示和查询文档
+     * @param pageNum
+     * @param pageSize
+     * @param fileName
+     * @param type
+     * @return
+     */
+    List<Document> selectFileByPage(
+            @Param("pageNum")int pageNum,
+            @Param("pageSize")int pageSize,
+            @Param("fileName")String fileName,
+            @Param("type")String type);
 }

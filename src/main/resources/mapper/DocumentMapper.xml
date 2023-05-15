@@ -49,4 +49,17 @@
         where doc_name like '%${name}%'
     </select>
 
+    <select id="selectFileByPage" resultType="com.back.pojo.Document">
+        select *
+        from document
+        where doc_name like concat('%', #{fileName}, '%')
+        <if test="type != null and type != ''">and type = #{type}</if>
+        limit #{pageNum},#{pageSize}
+    </select>
+    <select id="selectFileCount" resultType="java.lang.Integer">
+        select count(*)
+        from document
+        where doc_name like concat('%', #{fileName}, '%')
+        and type like concat('%', #{type}, '%')
+    </select>
 </mapper>

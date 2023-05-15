@@ -7,6 +7,7 @@ import com.back.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Files;
 import java.util.List;
 
 @Service
@@ -47,5 +48,15 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public List<Document> getAllDocByName(String name) {
         return documentMapper.selectAllDocByName(name);
+    }
+
+    @Override
+    public int selectFileCount(String fileName, String type) {
+        return documentMapper.selectFileCount(fileName,type);
+    }
+
+    @Override
+    public List<Document> selectFileByPage(int pageNum, int pageSize, String fileName, String type) {
+        return documentMapper.selectFileByPage(pageNum, pageSize, fileName, type);
     }
 }

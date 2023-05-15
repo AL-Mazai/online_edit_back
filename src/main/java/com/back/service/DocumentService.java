@@ -3,6 +3,8 @@ package com.back.service;
 import com.back.pojo.Document;
 import com.back.pojo.User;
 
+import javax.print.Doc;
+import java.nio.file.Files;
 import java.util.List;
 
 public interface DocumentService {
@@ -28,7 +30,7 @@ public interface DocumentService {
     boolean deleteDoc(int docId);
 
     /**
-     * 查看参与者参与的所有文档
+     * 查看所有文档
      * @return
      */
     List<Document> selectAllDocument();
@@ -39,4 +41,22 @@ public interface DocumentService {
      * @return
      */
     List<Document> getAllDocByName(String name);
+
+    /**
+     * 文档总数
+     * @param fileName
+     * @param type
+     * @return
+     */
+    int selectFileCount(String fileName, String type);
+
+    /**
+     * 分页展示和查询
+     * @param pageNum
+     * @param pageSize
+     * @param fileName
+     * @param type
+     * @return
+     */
+    List<Document> selectFileByPage(int pageNum, int pageSize, String fileName, String type);
 }
