@@ -82,8 +82,6 @@ public class DocumentController {
     @ResponseBody
     public ResponseEntity<Object> changeDocStatus(@RequestBody Map<String,Object> map){
         boolean isSuccess = documentService.changeDocStatus((Integer) map.get("docId"), (Boolean) map.get("status"));
-        System.out.println(map);
-        System.out.println(isSuccess);
         if (isSuccess == true) {
             return new ResponseEntity<>("更改成功", HttpStatus.OK);
         } else {

@@ -8,8 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
@@ -38,8 +40,13 @@ public class UserController {
     public ResponseEntity<Object> login(@RequestBody User userParam) {
         User user = userService.login(userParam.getEmail(), userParam.getPassword());
         if (user != null) {
+            /***用map存放用户的状态并返回给前端存储到本地***/
+            Map<String,Object> res = new HashMap();
+            user.setToken(UUID.randomUUID().toString());//生成一个随机字符串给token
+            res.put("token",user.getToken());
+            res.put("user",user);
             // 登录成功
-            return new ResponseEntity<>("登陆成功", HttpStatus.OK);
+            return new ResponseEntity<>(res, HttpStatus.OK);
         } else {
             // 登录失败
             return new ResponseEntity<>("登陆失败", HttpStatus.UNAUTHORIZED);
