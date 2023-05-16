@@ -51,6 +51,14 @@ public interface DocumentService {
     int selectFileCount(String fileName, String type);
 
     /**
+     * 更改文档状态
+     * @param docId
+     * @param status
+     * @return
+     */
+    boolean changeDocStatus(Integer docId, Boolean status);
+
+    /**
      * 分页展示和查询
      * @param pageNum
      * @param pageSize

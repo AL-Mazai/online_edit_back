@@ -57,14 +57,13 @@ public class DocumentController {
     @DeleteMapping("/deleteDocument")
     @ResponseBody
     public ResponseEntity<Object> deleteDoc(@RequestParam int docId) {
-        Boolean isSuccess = documentService.deleteDoc(docId);
+        boolean isSuccess = documentService.deleteDoc(docId);
         if (isSuccess == true) {
             return new ResponseEntity<>("删除成功", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("删除失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
-
 
     @GetMapping("/selectAllDocByName")
     @ResponseBody
@@ -76,6 +75,19 @@ public class DocumentController {
         } else {
 //            System.out.println("成功....");
             return new ResponseEntity<>(allDocument, HttpStatus.OK);
+        }
+    }
+
+    @PostMapping("/changeDocStatus")
+    @ResponseBody
+    public ResponseEntity<Object> changeDocStatus(@RequestBody Map<String,Object> map){
+        boolean isSuccess = documentService.changeDocStatus((Integer) map.get("docId"), (Boolean) map.get("status"));
+        System.out.println(map);
+        System.out.println(isSuccess);
+        if (isSuccess == true) {
+            return new ResponseEntity<>("更改成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("更改失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
 

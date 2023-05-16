@@ -56,6 +56,14 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
+    public boolean changeDocStatus(Integer docId, Boolean status) {
+        if(documentMapper.updateStatus(docId, status) > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public List<Document> selectFileByPage(int pageNum, int pageSize, String fileName, String type) {
         return documentMapper.selectFileByPage(pageNum, pageSize, fileName, type);
     }

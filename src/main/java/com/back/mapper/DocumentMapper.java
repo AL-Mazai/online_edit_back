@@ -73,4 +73,13 @@ public interface DocumentMapper {
             @Param("pageSize")int pageSize,
             @Param("fileName")String fileName,
             @Param("type")String type);
+
+    /**
+     * 更新文档状态
+     * @param status
+     * @param docId
+     * @return
+     */
+    int updateStatus(@Param("docId") Integer docId,
+                     @Param("status") boolean status);
 }

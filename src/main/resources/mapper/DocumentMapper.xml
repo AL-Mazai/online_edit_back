@@ -23,6 +23,9 @@
         insert into document(doc_id, doc_name, doc_content, type, created_time, status)
             value (#{docId},#{docName},#{docContent},#{type},#{createdTime},#{status})
     </insert>
+    <update id="updateStatus">
+        update document set status = #{status} where doc_id = #{docId}
+    </update>
 
     <delete id="deleteDoc">
         DELETE
