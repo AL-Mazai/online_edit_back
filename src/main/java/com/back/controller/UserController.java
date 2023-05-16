@@ -92,8 +92,10 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<Object> changePassword(@RequestBody Map<String,String> map) {
         boolean isSuccess = userService.changePassword(map.get("email"), map.get("oldPassword"), map.get("newPassword"));
+        Map<String,Object> res = new HashMap();
+        res.put("password",map.get("newPassword"));
         if (isSuccess) {
-            return new ResponseEntity<>("修改成功", HttpStatus.OK);
+            return new ResponseEntity<>(res, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("修改失败,请重试", HttpStatus.BAD_REQUEST);
         }
