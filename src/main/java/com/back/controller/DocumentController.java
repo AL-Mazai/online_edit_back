@@ -98,11 +98,13 @@ public class DocumentController {
             @RequestParam String type
     ) {
         pageNum = (pageNum - 1) * pageSize;
-        List<Document> files = documentService.selectFileByPage(pageNum, pageSize, fileName, type);
+        List<Document> documents = documentService.selectFileByPage(pageNum, pageSize, fileName, type);
         int total = documentService.selectFileCount(fileName, type);
         Map<String, Object> res = new HashMap<>();
         res.put("total", total);
-        res.put("docList", files);
+        res.put("docList", documents);
         return ResponseEntity.ok(res);
     }
+
+
 }

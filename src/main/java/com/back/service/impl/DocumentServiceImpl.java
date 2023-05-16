@@ -51,16 +51,16 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public int selectFileCount(String fileName, String type) {
-        return documentMapper.selectFileCount(fileName,type);
-    }
-
-    @Override
     public boolean changeDocStatus(Integer docId, Boolean status) {
         if(documentMapper.updateStatus(docId, status) > 0){
             return true;
         }
         return false;
+    }
+
+    @Override
+    public int selectFileCount(String fileName, String type) {
+        return documentMapper.selectFileCount(fileName,type);
     }
 
     @Override

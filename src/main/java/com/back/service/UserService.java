@@ -63,4 +63,20 @@ public interface UserService {
      * @return
      */
     List<Document> getAllDocParticipate(Integer userId);
+
+    /**
+     * 查询用户创建的文档总数
+     * @param userId
+     * @return
+     */
+    int selectFileCountCreateByUser(Integer userId);
+
+    /**
+     * 查询用户创建的所有文档
+     * @param userId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<Document> selectAllDocCreateByUserByPage(int userId, int pageNum, int pageSize);
 }

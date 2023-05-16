@@ -84,4 +84,14 @@ public class UserServiceImpl implements UserService {
         List<Document> documentList = userMapper.selectAllDocParticipate(userId);
         return documentList;
     }
+
+    @Override
+    public int selectFileCountCreateByUser(Integer userId) {
+        return userMapper.selectFileCountCreateByUser(userId);
+    }
+
+    @Override
+    public List<Document> selectAllDocCreateByUserByPage(int userId, int pageNum, int pageSize) {
+        return userMapper.selectAllDocCreateByUserByPage(userId, pageNum, pageSize);
+    }
 }

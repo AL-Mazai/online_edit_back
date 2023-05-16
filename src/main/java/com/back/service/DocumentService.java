@@ -43,20 +43,20 @@ public interface DocumentService {
     List<Document> getAllDocByName(String name);
 
     /**
-     * 文档总数
-     * @param fileName
-     * @param type
-     * @return
-     */
-    int selectFileCount(String fileName, String type);
-
-    /**
      * 更改文档状态
      * @param docId
      * @param status
      * @return
      */
     boolean changeDocStatus(Integer docId, Boolean status);
+
+    /**
+     * 文档总数
+     * @param fileName
+     * @param type
+     * @return
+     */
+    int selectFileCount(String fileName, String type);
 
     /**
      * 分页展示和查询

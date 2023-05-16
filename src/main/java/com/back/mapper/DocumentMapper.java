@@ -61,7 +61,7 @@ public interface DocumentMapper {
                         @Param("type") String type);
 
     /**
-     * 分页展示和查询文档
+     * 分页展示和查询所有文档
      * @param pageNum
      * @param pageSize
      * @param fileName

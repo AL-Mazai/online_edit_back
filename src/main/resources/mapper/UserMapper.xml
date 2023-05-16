@@ -84,4 +84,19 @@
         ORDER BY doc.doc_id ASC
     </select>
 
+    <select id="selectAllDocCreateByUserByPage" resultType="com.back.pojo.Document">
+        select distinct
+        <include refid="doc"></include>
+        from users u
+        join access ac on ac.user_id = #{userId} and ac.access_level = 1
+        join document doc on doc.doc_id = ac.doc_id
+        ORDER BY doc.doc_id ASC
+        limit #{pageNum}, #{pageSize}
+    </select>
+    <select id="selectFileCountCreateByUser" resultType="java.lang.Integer">
+        select count(*)
+        from access ac
+        where ac.user_id = #{userId} and ac.access_level = 1
+    </select>
+
 </mapper>

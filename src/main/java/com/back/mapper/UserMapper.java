@@ -76,4 +76,21 @@ public interface UserMapper {
      */
     List<Document> selectAllDocParticipate(Integer userId);
 
+    /**
+     * 查询用户创建的文档总数
+     * @param userId
+     * @return
+     */
+    int selectFileCountCreateByUser(@Param("userId") Integer userId);
+    /**
+     * 分页展示用户创建的所有文档
+     * @param userId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<Document> selectAllDocCreateByUserByPage(@Param("userId") Integer userId,
+                                                  @Param("pageNum") int pageNum,
+                                                  @Param("pageSize") int pageSize);
+
 }

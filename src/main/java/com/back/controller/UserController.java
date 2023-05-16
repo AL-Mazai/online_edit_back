@@ -111,4 +111,20 @@ public class UserController {
             return new ResponseEntity<>("修改失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
+
+    //分页
+    @GetMapping("/selectFilePageCreateByUser")
+    public ResponseEntity<Map<String, Object>> selectFilePageCreateByUser(
+            @RequestParam int userId,
+            @RequestParam int pageNum,
+            @RequestParam int pageSize
+    ) {
+        pageNum = (pageNum - 1) * pageSize;
+        List<Document> documents = userService.selectAllDocCreateByUserByPage(userId, pageNum, pageSize);
+        int total = userService.selectFileCountCreateByUser(userId);
+        Map<String, Object> res = new HashMap<>();
+        res.put("total", total);
+        res.put("userList", documents);
+        return ResponseEntity.ok(res);
+    }
 }
