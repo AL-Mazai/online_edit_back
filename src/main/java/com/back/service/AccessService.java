@@ -25,4 +25,11 @@ public interface AccessService {
      * @return
      */
     boolean deleteUserOfDoc(Integer userId, Integer docId);
+
+    /**
+     * 删除一条记录
+     * @param docId
+     * @return
+     */
+    boolean deleteAccessRecord(Integer docId);
 }

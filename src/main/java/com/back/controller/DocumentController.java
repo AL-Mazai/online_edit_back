@@ -23,6 +23,7 @@ public class DocumentController {
     @PostMapping("/insertDocument")
     @ResponseBody
     public ResponseEntity<Object> insertDocument(@RequestBody Document document) {
+        System.out.println(document);
         Boolean isSuccess = documentService.addDocument(document);
         if (isSuccess == true) {
             return new ResponseEntity<>("新建成功", HttpStatus.OK);
@@ -64,6 +65,16 @@ public class DocumentController {
             return new ResponseEntity<>("删除失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
+    @DeleteMapping("/deleteDocPermanent")
+    @ResponseBody
+    public ResponseEntity<Object> deleteDocPermanent(@RequestParam int docId) {
+        boolean isSuccess = documentService.deleteDocPermanent(docId);
+        if (isSuccess == true) {
+            return new ResponseEntity<>("删除成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("删除失败，请重试", HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @GetMapping("/selectAllDocByName")
     @ResponseBody
@@ -88,6 +99,16 @@ public class DocumentController {
             return new ResponseEntity<>("更改失败，请重试", HttpStatus.BAD_REQUEST);
         }
     }
+    @PostMapping("/recoverFromBin")
+    @ResponseBody
+    public ResponseEntity<Object> recoverFromBin(@RequestBody Map<String,Object> map){
+        boolean isSuccess = documentService.recoverFromBin((Integer) map.get("docId"));
+        if (isSuccess == true) {
+            return new ResponseEntity<>("恢复成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("恢复失败", HttpStatus.BAD_REQUEST);
+        }
+    }
 
     //分页
     @GetMapping("/selectFileByPage")
@@ -105,6 +126,4 @@ public class DocumentController {
         res.put("docList", documents);
         return ResponseEntity.ok(res);
     }
-
-
 }

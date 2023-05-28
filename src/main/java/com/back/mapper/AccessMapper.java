@@ -33,4 +33,11 @@ public interface AccessMapper {
      * @return
      */
     int deleteUserOfDoc(@Param("userId") Integer userId, @Param("docId") Integer docId);
+
+    /**
+     * 删除一条记录
+     * @param docId
+     * @return
+     */
+    int deleteAccessRecord(Integer docId);
 }

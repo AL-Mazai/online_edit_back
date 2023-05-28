@@ -14,8 +14,6 @@ public class Document implements Serializable {
 
     private String docName;
 
-    private String docContent;
-
     private String type;
 
     private Date createdTime;
@@ -25,6 +23,8 @@ public class Document implements Serializable {
      */
     private boolean status;
 
-    //多对多的映射关系：一个文档可由多个用户参与
-//    private List<User> userList;
+    /**
+     * 1表示未删除，0表示已被删除
+     */
+    private int isDelete;
 }

@@ -44,6 +44,14 @@ public class DocumentServiceImpl implements DocumentService {
             return false;
         }
     }
+    @Override
+    public boolean deleteDocPermanent(int docId) {
+        if (documentMapper.deleteDocPermanent(docId) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     @Override
     public List<Document> getAllDocByName(String name) {
@@ -53,6 +61,14 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public boolean changeDocStatus(Integer docId, Boolean status) {
         if(documentMapper.updateStatus(docId, status) > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean recoverFromBin(Integer docId) {
+        if(documentMapper.recoverFromBin(docId) > 0){
             return true;
         }
         return false;

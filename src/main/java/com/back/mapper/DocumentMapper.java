@@ -43,6 +43,13 @@ public interface DocumentMapper {
     int deleteDoc(Integer docId);
 
     /**
+     * 从回收站中永久删除文档
+     * @param docId
+     * @return
+     */
+    int deleteDocPermanent(Integer docId);
+
+    /**
      * 前端主页搜索框输入关键字查询符合的所有文档
      * 聂负责（已完成）
      * @param name
@@ -82,4 +89,11 @@ public interface DocumentMapper {
      */
     int updateStatus(@Param("docId") Integer docId,
                      @Param("status") boolean status);
+
+    /**
+     * 从回收站中恢复文档
+     * @param docId
+     * @return
+     */
+    int recoverFromBin(Integer docId);
 }

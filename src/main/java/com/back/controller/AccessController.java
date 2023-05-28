@@ -47,4 +47,15 @@ public class AccessController {
             return new ResponseEntity<>("踢除失败", HttpStatus.BAD_REQUEST);
         }
     }
+
+    @DeleteMapping("/deleteAccessRecord")
+    @ResponseBody
+    public ResponseEntity<Object> deleteAccessRecord(@RequestParam("docId") Integer docId) {
+        boolean isSuccess = accessService.deleteAccessRecord(docId);
+        if (isSuccess) {
+            return new ResponseEntity<>("删除成功", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("删除失败", HttpStatus.BAD_REQUEST);
+        }
+    }
 }

@@ -30,6 +30,13 @@ public interface DocumentService {
     boolean deleteDoc(int docId);
 
     /**
+     * 永久删除文档
+     * @param docId
+     * @return
+     */
+    boolean deleteDocPermanent(int docId);
+
+    /**
      * 查看所有文档
      * @return
      */
@@ -49,6 +56,13 @@ public interface DocumentService {
      * @return
      */
     boolean changeDocStatus(Integer docId, Boolean status);
+
+    /**
+     * 恢复文档
+     * @param docId
+     * @return
+     */
+    boolean recoverFromBin(Integer docId);
 
     /**
      * 文档总数

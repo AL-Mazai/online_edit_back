@@ -34,4 +34,12 @@ public class AccessServiceImpl implements AccessService {
         }
         return false;
     }
+
+    @Override
+    public boolean deleteAccessRecord(Integer docId){
+        if (accessMapper.deleteAccessRecord(docId) > 0) {
+            return true;
+        }
+        return false;
+    }
 }

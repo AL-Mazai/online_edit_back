@@ -124,7 +124,7 @@ public class UserController {
         int total = userService.selectFileCountCreateByUser(userId);
         Map<String, Object> res = new HashMap<>();
         res.put("total", total);
-        res.put("userList", documents);
+        res.put("docList", documents);
         return ResponseEntity.ok(res);
     }
 }
