@@ -52,10 +52,11 @@ public interface DocumentMapper {
     /**
      * 前端主页搜索框输入关键字查询符合的所有文档
      * 聂负责（已完成）
-     * @param name
+     * @param fileName userId
      * @return
      */
-    List<Document> selectAllDocByName(String name);
+    List<Document> selectAllDocByName(@Param("fileName") String fileName,
+                                      @Param("userId") Integer userId);
 
 
     /**
@@ -65,7 +66,9 @@ public interface DocumentMapper {
      * @return
      */
     int selectFileCount(@Param("fileName") String fileName,
-                        @Param("type") String type);
+                        @Param("type") String type,
+                        @Param("accessLevel") int accessLevel,
+                        @Param("userId") int userId);
 
     /**
      * 分页展示和查询所有文档
@@ -79,7 +82,9 @@ public interface DocumentMapper {
             @Param("pageNum")int pageNum,
             @Param("pageSize")int pageSize,
             @Param("fileName")String fileName,
-            @Param("type")String type);
+            @Param("type")String type,
+            @Param("accessLevel") int accessLevel,
+            @Param("userId") int userId);
 
     /**
      * 更新文档状态

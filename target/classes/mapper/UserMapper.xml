@@ -88,10 +88,13 @@
         ORDER BY doc.doc_id ASC
         limit #{pageNum}, #{pageSize}
     </select>
+
     <select id="selectFileCountCreateByUser" resultType="java.lang.Integer">
-        select count(*)
-        from access ac
+        select distinct count(*)
+        from access ac, document dc
         where ac.user_id = #{userId} and ac.access_level = 1
+        and dc.doc_id = ac.doc_id
+        and dc.is_delete = 1
     </select>
 
 </mapper>

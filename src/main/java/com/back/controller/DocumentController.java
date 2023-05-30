@@ -78,13 +78,12 @@ public class DocumentController {
 
     @GetMapping("/selectAllDocByName")
     @ResponseBody
-    public ResponseEntity<Object> selectAllDocByName(@RequestParam("name") String name) {
-//        System.out.println("正在查找....");
-        List<Document> allDocument = documentService.getAllDocByName(name);
+    public ResponseEntity<Object> selectAllDocByName(@RequestParam("fileName") String fileName,
+                                                     @RequestParam("userId") Integer userId) {
+        List<Document> allDocument = documentService.getAllDocByName(fileName, userId);
         if (allDocument == null) {
             return new ResponseEntity<>("没有查找到内容", HttpStatus.NO_CONTENT);
         } else {
-//            System.out.println("成功....");
             return new ResponseEntity<>(allDocument, HttpStatus.OK);
         }
     }
@@ -113,14 +112,16 @@ public class DocumentController {
     //分页
     @GetMapping("/selectFileByPage")
     public ResponseEntity<Map<String, Object>> selectFilePage(
-            @RequestParam int pageNum,
-            @RequestParam int pageSize,
+            @RequestParam Integer userId,
+            @RequestParam Integer pageNum,
+            @RequestParam Integer pageSize,
             @RequestParam String fileName,
-            @RequestParam String type
+            @RequestParam String type,
+            @RequestParam Integer accessLevel
     ) {
         pageNum = (pageNum - 1) * pageSize;
-        List<Document> documents = documentService.selectFileByPage(pageNum, pageSize, fileName, type);
-        int total = documentService.selectFileCount(fileName, type);
+        List<Document> documents = documentService.selectFileByPage(pageNum, pageSize, fileName, type, accessLevel, userId);
+        int total = documentService.selectFileCount(fileName, type, accessLevel, userId);
         Map<String, Object> res = new HashMap<>();
         res.put("total", total);
         res.put("docList", documents);

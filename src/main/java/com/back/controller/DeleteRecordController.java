@@ -49,9 +49,7 @@ public class DeleteRecordController {
     ) {
         pageNum = (pageNum - 1) * pageSize;
         List<Document> documents = deleteRecordService.selectAllDocDeleteByUserByPage(userId, pageNum, pageSize);
-        System.out.println(documents);//测试
         int total = deleteRecordService.selectFileCountDeleteByUser(userId);
-        System.out.println(total);//测试
         Map<String, Object> res = new HashMap<>();
         res.put("total", total);
         res.put("deleteDocList", documents);

@@ -54,8 +54,8 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public List<Document> getAllDocByName(String name) {
-        return documentMapper.selectAllDocByName(name);
+    public List<Document> getAllDocByName(String fileName, Integer userId) {
+        return documentMapper.selectAllDocByName(fileName, userId);
     }
 
     @Override
@@ -75,12 +75,12 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public int selectFileCount(String fileName, String type) {
-        return documentMapper.selectFileCount(fileName,type);
+    public int selectFileCount(String fileName, String type, int accessLevel, int userId) {
+        return documentMapper.selectFileCount(fileName,type, accessLevel,userId);
     }
 
     @Override
-    public List<Document> selectFileByPage(int pageNum, int pageSize, String fileName, String type) {
-        return documentMapper.selectFileByPage(pageNum, pageSize, fileName, type);
+    public List<Document> selectFileByPage(int pageNum, int pageSize, String fileName, String type, int accessLevel, int userId) {
+        return documentMapper.selectFileByPage(pageNum, pageSize, fileName, type, accessLevel, userId);
     }
 }

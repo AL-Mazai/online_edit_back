@@ -51,25 +51,33 @@
 
     <select id="selectAllDocByName" resultType="com.back.pojo.Document">
         select *
-        from document
-        where doc_name like '%${name}%'
+        from document dc, access ac
+        where doc_name like concat('%', #{fileName}, '%')
+        and dc.doc_id = ac.doc_id
+        and ac.user_id = #{userId}
         and is_delete = 1
     </select>
 
     <select id="selectFileByPage" resultType="com.back.pojo.Document">
         select *
-        from document
+        from document dc, access ac
         where doc_name like concat('%', #{fileName}, '%')
         and is_delete = 1
+        and dc.doc_id = ac.doc_id
+        and ac.user_id = #{userId}
+        and ac.access_level = #{accessLevel}
         <if test="type != null and type != ''">and type = #{type}</if>
         limit #{pageNum},#{pageSize}
     </select>
 
     <select id="selectFileCount" resultType="java.lang.Integer">
         select count(*)
-        from document
-        where doc_name like concat('%', #{fileName}, '%')
-        and type like concat('%', #{type}, '%')
+        from document dc, access ac
+        where dc.doc_name like concat('%', #{fileName}, '%')
+        and dc.type like concat('%', #{type}, '%')
+        and dc.doc_id = ac.doc_id
+        and ac.user_id = #{userId}
+        and ac.access_level = #{accessLevel}
         and is_delete = 1
     </select>
 </mapper>

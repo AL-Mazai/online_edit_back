@@ -33,7 +33,9 @@
 
     <select id="selectFileCountDeleteByUser" resultType="java.lang.Integer">
         select count(*)
-        from delete_record dr
+        from delete_record dr, document dc
         where dr.user_id = #{userId}
+        and dc.doc_id = dr.doc_id
+        and dc.is_delete = 0
     </select>
 </mapper>

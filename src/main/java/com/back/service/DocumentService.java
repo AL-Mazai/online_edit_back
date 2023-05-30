@@ -44,10 +44,10 @@ public interface DocumentService {
 
     /**
      * 根据文档名称关键字查找文档
-     * @param name
+     * @param fileName userId
      * @return
      */
-    List<Document> getAllDocByName(String name);
+    List<Document> getAllDocByName(String fileName, Integer userId);
 
     /**
      * 更改文档状态
@@ -70,7 +70,7 @@ public interface DocumentService {
      * @param type
      * @return
      */
-    int selectFileCount(String fileName, String type);
+    int selectFileCount(String fileName, String type, int accessLevel, int userId);
 
     /**
      * 分页展示和查询
@@ -80,5 +80,5 @@ public interface DocumentService {
      * @param type
      * @return
      */
-    List<Document> selectFileByPage(int pageNum, int pageSize, String fileName, String type);
+    List<Document> selectFileByPage(int pageNum, int pageSize, String fileName, String type, int accessLevel, int userId);
 }
