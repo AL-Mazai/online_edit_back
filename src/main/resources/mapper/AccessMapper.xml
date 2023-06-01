@@ -23,8 +23,15 @@
     <delete id="deleteUserOfDoc">
         delete from access where doc_id = ${docId} and user_id = ${userId}
     </delete>
+
     <delete id="deleteAccessRecord">
         delete from access where doc_id = #{docId}
     </delete>
+
+    <select id="getAccessLevelBeForeEdit" resultType="java.lang.Integer">
+        select access_level from access
+        where user_id = #{userId} and doc_id = #{docId}
+    </select>
+
 
 </mapper>

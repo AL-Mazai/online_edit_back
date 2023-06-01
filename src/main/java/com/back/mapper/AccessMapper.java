@@ -40,4 +40,13 @@ public interface AccessMapper {
      * @return
      */
     int deleteAccessRecord(Integer docId);
+
+    /**
+     * 用户编辑文档之前获得该文档的权限
+     * @param userId
+     * @param docId
+     * @return
+     */
+    int getAccessLevelBeForeEdit(@Param("userId") Integer userId,
+                                 @Param("docId") Integer docId);
 }

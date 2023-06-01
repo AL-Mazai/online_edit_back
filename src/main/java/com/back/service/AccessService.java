@@ -32,4 +32,13 @@ public interface AccessService {
      * @return
      */
     boolean deleteAccessRecord(Integer docId);
+
+    /**
+     * 编辑前获取权限
+     * @param userId
+     * @param docId
+     * @return
+     */
+    int getAccessLevel(Integer userId, Integer docId);
+
 }

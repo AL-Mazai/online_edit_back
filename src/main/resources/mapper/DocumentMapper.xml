@@ -39,7 +39,7 @@
         from users,
              access
         where users.user_id = access.user_id
-          and access.doc_id = #{docId} and access.access_level = 2
+          and access.doc_id = #{docId} and access.access_level != 1
     </select>
 
     <select id="selectAllDoc" resultType="com.back.pojo.Document">

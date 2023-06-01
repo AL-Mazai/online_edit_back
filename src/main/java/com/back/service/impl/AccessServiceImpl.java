@@ -42,4 +42,10 @@ public class AccessServiceImpl implements AccessService {
         }
         return false;
     }
+
+    @Override
+    public int getAccessLevel(Integer userId, Integer docId) {
+        int accessLevel = accessMapper.getAccessLevelBeForeEdit(userId, docId);
+        return accessLevel;
+    }
 }

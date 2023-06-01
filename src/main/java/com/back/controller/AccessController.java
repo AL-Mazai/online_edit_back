@@ -1,11 +1,14 @@
 package com.back.controller;
 
 import com.back.pojo.Access;
+import com.back.pojo.Document;
 import com.back.service.AccessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/access")
@@ -56,6 +59,18 @@ public class AccessController {
             return new ResponseEntity<>("删除成功", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("删除失败", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/getAccessLevel")
+    @ResponseBody
+    public ResponseEntity<Object> getAccessLevel(@RequestParam("userId") Integer userId,
+                                                 @RequestParam("docId") Integer docId) {
+        int accessLevel = accessService.getAccessLevel(userId, docId);
+        if (accessLevel != 0) {
+            return new ResponseEntity<>(accessLevel, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(accessLevel, HttpStatus.BAD_REQUEST);
         }
     }
 }
