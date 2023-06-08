@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.back.mapper.ToolsMapper">
+
+    <resultMap id="BaseResultMap" type="com.back.pojo.Tools">
+            <id property="toolId" column="tool_id" jdbcType="INTEGER"/>
+            <result property="logoLink" column="logo_link" jdbcType="VARCHAR"/>
+            <result property="toolName" column="tool_name" jdbcType="VARCHAR"/>
+            <result property="toolUrl" column="tool_url" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        tool_id,logo_link,tool_name,
+        tool_url
+    </sql>
+    <insert id="addTool">
+        INSERT INTO tools(tool_id, logo_link, tool_name, tool_url)
+        VALUES (#{toolId}, #{logoLink}, #{toolName}, #{toolUrl})
+    </insert>
+    <select id="getAllTool" resultType="com.back.pojo.Tools">
+        select * from tools;
+    </select>
+
+
+</mapper>

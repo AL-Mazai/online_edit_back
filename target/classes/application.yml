@@ -39,3 +39,10 @@ pagehelper:
   # 为了支持startPage(Object params)方法，增加了该参数来配置参数映射，用于从对象中根据属性名取值， 可以配置 pageNum,pageSize,count,pageSizeZero,reasonable，不配置映射的用默认值， 默认值为pageNum=pageNum;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero
   params: count=countSql
   row-bounds-with-count: true
+
+oss:
+  qiniu:
+    url: http://rvwv74zmk.hn-bkt.clouddn.com # 这里如果有自己的域名就去绑定自己的 没有的就只能使用七牛云的测试域名
+    accessKey: vPExdWLiG0BUIn7IQppbJcIirPpbQbYSHBliIbT0
+    secretKey: u9ioqCaoWFCIDIdlqLmNPFu5N6sBPvphETzKgnbW
+    bucketName: caiwei-test

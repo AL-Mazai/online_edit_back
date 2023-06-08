@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.back.mapper.DeleteRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.back.pojo.DeleteRecord">
+        <id property="deleteId" column="delete_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="docId" column="doc_id" jdbcType="INTEGER"/>
+    </resultMap>
+    <insert id="insertRecord">
+        insert into delete_record
+        values (#{deleteId}, #{userId}, #{docId})
+    </insert>
+    <delete id="deleteRecord">
+        delete from delete_record where doc_id = #{docId}
+    </delete>
+    <sql id="doc">
+        doc.doc_id, doc.doc_name, doc.type
+    </sql>
+
+    <select id="selectAllDocDeleteByUserByPage" resultType="com.back.pojo.Document">
+        select distinct
+        <include refid="doc"></include>
+        from users u
+        join delete_record dr on dr.user_id = #{userId}
+        join document doc on doc.doc_id = dr.doc_id
+        where doc.is_delete = 0
+        ORDER BY doc.doc_id ASC
+        limit #{pageNum}, #{pageSize}
+    </select>
+
+    <select id="selectFileCountDeleteByUser" resultType="java.lang.Integer">
+        select count(*)
+        from delete_record dr, document dc
+        where dr.user_id = #{userId}
+        and dc.doc_id = dr.doc_id
+        and dc.is_delete = 0
+    </select>
+</mapper>

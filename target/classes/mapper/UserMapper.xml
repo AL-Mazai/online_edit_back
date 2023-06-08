@@ -72,7 +72,7 @@
         select distinct
         <include refid="doc"></include>
         from users u
-        join access ac on ac.user_id = #{userId} and ac.access_level = 2
+        join access ac on ac.user_id = #{userId} and ac.access_level != 1
         join document doc on doc.doc_id = ac.doc_id
         where doc.is_delete = 1
         ORDER BY doc.doc_id ASC
